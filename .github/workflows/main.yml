@@ -5,13 +5,13 @@
 
 name: Office E5
 
-run-name: Office E5
+run-name: OE_email
 
 on:
   schedule:
     - cron: 0/57 0-2 * * * # ~ 3 times
-    - cron: 0/57 9-11 * * * # ~ 3 times
-    - cron: 0/57 14-16 * * * # ~ 3 times (9 times total)
+    - cron: 0/44 9-11 * * * # ~ 3 times
+    - cron: 0/36 14-16 * * * # ~ ? times (? times total)
   release:
     types: [published]
   watch:
