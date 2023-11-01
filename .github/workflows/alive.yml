@@ -7,7 +7,7 @@ run-name: alive
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 1,2,14,23 * *'
+    - cron: '0 0 1,14,23 * *'
 
 jobs:
   auto_renew:
@@ -30,12 +30,13 @@ jobs:
           git config --local user.email "RWTighnari@icloud.com"
           git config --local user.name "RWTighnari"
           git add .
-          git diff --quiet && git diff --staged --quiet || git commit -am 'test'
-          echo ::set-output name=status::success
+          git commit -m "Auto-refresh"
+        #   git diff --quiet && git diff --staged --quiet || git commit -am 'Auto-refresh'
+        #   echo ::set-output name=status::success
            
       - name: 'GitHub Push'
-        if: steps.commit.output.status != 'success'
-        uses: ad-m/github-push-action@v0.6.0
+    #     if: steps.commit.output.status != 'success'
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}

@@ -9,9 +9,9 @@ on:
     branches:
       - main
   schedule:
-    - cron: 0/57 0-2 * * * # ~ 3 times
-    - cron: 0/57 9-11 * * * # ~ 3 times
-    - cron: 0/57 14-16 * * * # ~ 3 times (9 times total)
+    - cron: 0/57 4-6 * * * # ~ 3 times
+    - cron: 0/54 19-20 * * * # ~ 2 times
+    - cron: 0/55 21-23 * * * # ~ 3 times (8 times total)
   watch:
     types: [started]
 jobs:
