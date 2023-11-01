@@ -34,7 +34,7 @@ jobs:
       - name: Unzip config #解压配置文件
         run: |
          mkdir -p ~/.config/rclone/
-         unzip -P ${{ secrets.PASSWD }} act.zip -d ~/.config/rclone/
+         unzip -P ${{ secrets.UZPASSWD }} act.zip -d ~/.config/rclone/
      
       - name: Run rclone #运行rclone
         run: |
@@ -50,7 +50,7 @@ jobs:
           rclone delete efar:/EF-Rclone-Actions/lsd.log
           rclone rmdir efar:/EF-Rclone-Actions/
       - name: Zip config #打包配置文件
-        run: zip -P ${{ secrets.PASSWD }} act.zip -j ~/.config/rclone/rclone.conf
+        run: zip -P ${{ secrets.UZPASSWD }} act.zip -j ~/.config/rclone/rclone.conf
 
       - name: Commit config #提交配置文件
         run: |
