@@ -27,9 +27,7 @@ jobs:
         run: curl https://rclone.org/install.sh | sudo bash
 
       - name: Unzip config #解压配置文件
-        run: |
-         mkdir -p ~/.config/rclone/
-         7z e act.zip -p"${{ secrets.PASSWD }}" -o"~/.config/rclone/" -y
+        run: 7z e act.zip -p"${{ secrets.PASSWD }}" -o"/home/runner/.config/rclone/" -y
      
       - name: Run rclone #运行rclone
         run: |
