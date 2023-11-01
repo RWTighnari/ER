@@ -1,0 +1,61 @@
+# https://github.com/kmou424/e5-renew/blob/main/.github/workflows/E5-Rclone-Actions-Repo.yml
+
+name: EF-Rclone-Actions
+
+run-name: Deploy to ...
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 0/57 0-2 * * * # ~ 3 times
+    - cron: 0/57 9-11 * * * # ~ 3 times
+    - cron: 0/57 14-16 * * * # ~ 3 times (9 times total)
+  watch:
+    types: [started]
+jobs:
+  act:
+    runs-on: ubuntu-latest
+    name: Act
+    steps:
+
+      - name: Checkout codes
+        uses: actions/checkout@v2
+
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: Asia/Shanghai
+
+      - name: Install rclone #安装rclone
+        run: curl https://rclone.org/install.sh | sudo bash
+
+      - name: Unzip config #解压配置文件
+        run: |
+         mkdir -p ~/.config/rclone/
+         unzip -P ${{ secrets.PASSWD }} act.zip -d ~/.config/rclone/
+     
+      - name: Run rclone #运行rclone
+        run: |
+          
+          # 更改时区
+          sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          
+          # 列出文件(此处不展示)
+          echo "List files(not show)"
+          rclone lsd efar:/ > "lsd.log"
+          rclone mkdir efar:/EF-Rclone-Actions/
+          rclone move lsd.log efar:/EF-Rclone-Actions/
+          rclone delete efar:/EF-Rclone-Actions/lsd.log
+          rclone rmdir efar:/EF-Rclone-Actions/
+      - name: Zip config #打包配置文件
+        run: zip -P ${{ secrets.PASSWD }} act.zip -j ~/.config/rclone/rclone.conf
+
+      - name: Commit config #提交配置文件
+        run: |
+         git config --global user.email "action@github.com"
+         git config --global user.name "actions"
+         git add .
+         git commit -am "Auto act"
+         git push
