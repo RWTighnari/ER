@@ -2,6 +2,8 @@
 
 name: 'alive'
 
+run-name: alive
+
 on:
   workflow_dispatch:
   schedule:

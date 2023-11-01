@@ -1,8 +1,8 @@
 # https://github.com/kmou424/e5-renew/blob/main/.github/workflows/E5-Rclone-Actions-Repo.yml
 
-name: EF-Rclone-Actions
+name: EF-rclone-Actions
 
-run-name: Deploy to ...
+run-name: Deploy to rclone
 
 on:
   push:
