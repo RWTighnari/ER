@@ -7,8 +7,9 @@ run-name: alive
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 1,14,23 * *'
-
+    - cron: '0 9,17,21 * * 1-5'
+    - cron: '30 17,21 * * 6'
+    - cron: '30 15 * * 0'
 jobs:
   auto_renew:
     runs-on: ubuntu-latest
