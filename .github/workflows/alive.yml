@@ -28,8 +28,8 @@ jobs:
       - name: 'Commit Files'
         id: commit
         run: |
-          git config --local user.email "RWTighnari@icloud.com"
           git config --local user.name "RWTighnari"
+          git config --local user.email "RWTighnari@icloud.com"
           git add .
           git commit -m "Hot patching"
         #   git diff --quiet && git diff --staged --quiet || git commit -am 'Auto-refresh'
