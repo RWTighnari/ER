@@ -33,11 +33,11 @@ jobs:
           git add .
           git commit -m "Hot patching"
         #   git diff --quiet && git diff --staged --quiet || git commit -am 'Auto-refresh'
-          echo ::set-output name=status::success
+          # echo ::set-output name=status::success
            
-      - name: 'GitHub Push'
-        if: steps.commit.output.status != 'success'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+      # - name: 'GitHub Push'
+      #   if: steps.commit.output.status != 'success'
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref }}
