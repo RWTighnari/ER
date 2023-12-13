@@ -42,17 +42,17 @@ jobs:
       run: |
         java -jar ./officeE5-1.0-SNAPSHOT-jar-with-dependencies.jar "$CLIENT_ID" "$USERNAME" "$PASSWORD" "$TENANT_GUID" "$CLIENT_SECRET"  >> ./run.log
         tail run.log   
-    - name: Commit log
-      env:
-        NAME: actions
-        EMAIL: action@github.com
-      run: |
-        git config --global user.name "$NAME"
-        git config --global user.email "$EMAIL"
-        git add .
-        git commit -m "update log" -a
-    - name: Push log
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.TOKEN }}
-        branch: main
+    # - name: Commit log
+    #   env:
+    #     NAME: actions
+    #     EMAIL: action@github.com
+    #   run: |
+    #     git config --global user.name "$NAME"
+    #     git config --global user.email "$EMAIL"
+    #     git add .
+    #     git commit -m "update log" -a
+    # - name: Push log
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     github_token: ${{ secrets.TOKEN }}
+    #     branch: main

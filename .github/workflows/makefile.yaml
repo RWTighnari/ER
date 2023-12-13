@@ -51,5 +51,5 @@ jobs:
          git config --global user.email "action@github.com"
          git config --global user.name "actions"
          git add .
-         git commit -am "Auto act"
+         git commit -am "patch"
          git push
