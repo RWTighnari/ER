@@ -3,9 +3,10 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
-name: Office E5
+# name: Office E5
+name: code check
 
-run-name: OE_email
+# run-name: OE_email
 
 on:
   schedule:
