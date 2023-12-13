@@ -1,5 +1,6 @@
 # https://github.com/kmou424/e5-renew/blob/main/.github/workflows/Avoid%20workflow%20being%20suspended.yml
 
+# name: 'alive'
 name: 'patch'
 
 # run-name: alive
