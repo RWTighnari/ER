@@ -1,8 +1,8 @@
 # https://github.com/kmou424/e5-renew/blob/main/.github/workflows/Avoid%20workflow%20being%20suspended.yml
 
-name: 'alive'
+name: 'patch'
 
-run-name: alive
+# run-name: alive
 
 on:
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
           git config --local user.name "RWTighnari"
           git config --local user.email "RWTighnari@icloud.com"
           git add .
-          git commit -am "Hot patching"
+          git commit -am "fixes for possible issues"
         #   git diff --quiet && git diff --staged --quiet || git commit -am 'Auto-refresh'
           # echo ::set-output name=status::success
            
